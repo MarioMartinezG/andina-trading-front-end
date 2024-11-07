@@ -1,0 +1,57 @@
+<div class="col-12">
+    <div class="card">
+        <p-breadcrumb [model]="breadcrumbItems" [home]="{icon: 'pi pi-home'}"></p-breadcrumb>
+    </div>
+</div>
+<p-messages />
+<div class="col-12">
+    <div class="card">
+        <form [formGroup]="dataInversionistaForm" (ngSubmit)="actualizarInformacion()">
+            <div class="p-fluid p-formgrid grid">
+                <div class="field col-12 md:col-6">
+                    <label htmlFor="primerNombre">Primer Nombre</label>
+                    <input pInputText id="primerNombre" type="text" formControlName="primerNombre" />
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label htmlFor="segundoNombre">Segundo Nombre</label>
+                    <input pInputText id="segundoNombre" type="text" formControlName="segundoNombre" />
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label htmlFor="primerApellido">Primer Apelldo</label>
+                    <input pInputText id="primerApellido" type="text" formControlName="primerApellido" />
+                </div>
+                <div class="field col-12 md:col-6">
+                    <label htmlFor="segundoApellido">Segundo Apelldo</label>
+                    <input pInputText id="segundoApellido" type="text" formControlName="segundoApellido" />
+                </div>
+                <div class="field col-12 ">
+                    <label htmlFor="correo">Correo Electrónico</label>
+                    <input pInputText id="correo" type="email" formControlName="correo" />
+                </div>
+                <div class="field col-12 ">
+                    <label htmlFor="cuenta">Número de cuenta</label>
+                    <input pInputText id="cuenta" type="number" formControlName="cuenta" />
+                </div>
+                <div class="field col-12">
+                    <label htmlFor="direccion">Direccion Física</label>
+                    <input pInputTextarea id="direccion" rows="4" formControlName="direccion" />
+                </div>
+                <div class="field col-12">
+                    <label htmlFor="pais">País</label>
+                    <p-dropdown [options]="paises" [filter]="true" filterBy="name" [showClear]="true"
+                        [virtualScroll]="true" [virtualScrollItemSize]="10" optionLabel="name" optionValue="name"
+                        formControlName="pais" (onChange)="cambioPais($event)"></p-dropdown>
+                </div>
+                <div *ngIf="(ciudades || []).length > 0" class="field col-12">
+                    <label htmlFor="ciudad">Ciudad</label>
+                    <p-dropdown [options]="ciudades" [filter]="true" filterBy="name" [showClear]="true"
+                        [virtualScroll]="true" [virtualScrollItemSize]="10" optionLabel="name" optionValue="name"
+                        formControlName="ciudad"></p-dropdown>
+                </div>
+            </div>
+            <div class="flex justify-content-center">
+                <button pButton label="Actualizar" icon="pi pi-sync" type="submit" [loading]="loading"></button>
+            </div>
+        </form>
+    </div>
+</div>
