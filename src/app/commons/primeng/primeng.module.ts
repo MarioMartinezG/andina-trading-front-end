@@ -10,6 +10,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { TableModule } from 'primeng/table';
 import { DropdownModule } from "primeng/dropdown";
 import { MessagesModule } from 'primeng/messages';
+import { BadgeModule } from 'primeng/badge';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { MessagesModule } from 'primeng/messages';
     TableModule,
     DropdownModule,
     MessagesModule,
+    BadgeModule,
   ],
   exports: [
     PasswordModule,
@@ -34,6 +36,7 @@ import { MessagesModule } from 'primeng/messages';
     TableModule,
     DropdownModule,
     MessagesModule,
+    BadgeModule,
   ]
 })
 export class PrimengModule { }

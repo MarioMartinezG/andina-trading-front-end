@@ -1,10 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 import { AuthService } from '../../auth/services/auth.service';
 
-import { UpdateInversionistaDto, InversionistaResponse } from '../models';
+import { UpdateInversionistaDto, InversionistaResponse, CompraAccion, ComprasResponse } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +29,13 @@ export class InversionistaService {
     const headers = this.getAuthHeaders();
 
     return this._http.patch<InversionistaResponse>(`${this._URL_API + this._BASE_ENDPOINT}/${id}`, updateData, { headers });
+  }
+
+  getCompras(): Observable<CompraAccion[]> {
+    return this._http.get<ComprasResponse>('/assets/data/inversionistas/compras/compras.json')
+      .pipe(
+        map(response => response.data)
+      );
   }
 
   private getAuthHeaders() {

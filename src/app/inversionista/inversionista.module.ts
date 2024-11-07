@@ -15,11 +15,13 @@ import { NotificationService } from '../commons/services/notification.service';
 
 // Componentes
 import { DatosComponent } from './components/datos/datos.component';
+import { ConsultarComprasComponent } from './components/consultar-compras/consultar-compras.component';
 
 
 @NgModule({
   declarations: [
-    DatosComponent
+    DatosComponent,
+    ConsultarComprasComponent
   ],
   providers: [
     NotificationService,

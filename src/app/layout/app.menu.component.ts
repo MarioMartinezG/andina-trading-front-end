@@ -23,8 +23,8 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Consulta de Información',
                 items: [
-                    { label: 'Buscar Productos', icon: 'pi pi-search', routerLink: ['/home/inversionista/prductos'] },
-                    { label: 'Consultar compras', icon: 'pi pi-shopping-bag', routerLink: ['/home/inversionista/compras'] },
+                    { label: 'Consultar compras', icon: 'pi pi-shopping-bag', routerLink: ['/home/inversionista/consultar-compras'] },
+                    { label: 'Buscar Productos', icon: 'pi pi-search', routerLink: ['/home/inversionista/productos'] },
                 ]
             },
         ];

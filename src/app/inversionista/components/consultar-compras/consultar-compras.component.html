@@ -1,0 +1,94 @@
+<div class="grid">
+    <div class="col-12">
+        <div class="card px-6 py-6">
+            <p-messages />
+
+            <p-table #dt [value]="comprasAcciones" responsiveLayout="scroll" [rows]="10"
+                [globalFilterFields]="['fechaCompra', 'sector', 'ticker', 'empresa', 'periodoTenencia']"
+                [paginator]="true" [rowsPerPageOptions]="[10,20,30]" [showCurrentPageReport]="true"
+                currentPageReportTemplate="Mostrando del registro {first} al {last} de {totalRecords} registros totales">
+                <ng-template pTemplate="caption">
+                    <div class="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
+                        <h5 class="m-0">Inventario de Acciones adquiridas</h5>
+                        <span class="block mt-2 md:mt-0 p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="onGlobalFilter(dt, $event)" placeholder="Búsqueda"
+                                class="w-full sm:w-auto" />
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="fechaCompra">Fecha de Compra <p-sortIcon field="fechaCompra"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="cantidad">Cantidad <p-sortIcon field="cantidad"></p-sortIcon></th>
+                        <th pSortableColumn="precioAccion">Precio por Acción <p-sortIcon
+                                field="precioAccion"></p-sortIcon></th>
+                        <th pSortableColumn="costoTotal">Costo Total <p-sortIcon field="costoTotal"></p-sortIcon></th>
+                        <th pSortableColumn="comision">Comisión <p-sortIcon field="comision"></p-sortIcon></th>
+                        <th pSortableColumn="valorActualAccion">Valor Actual por Acción <p-sortIcon
+                                field="valorActualAccion"></p-sortIcon>
+                        <th pSortableColumn="valorActualTotal">Valor Actual Total <p-sortIcon
+                                field="valorActualTotal"></p-sortIcon>
+                        <th pSortableColumn="gananciaPerdida">Ganancia/Pérdida <p-sortIcon
+                                field="gananciaPerdida"></p-sortIcon>
+                        <th pSortableColumn="cambio">Cambio <p-sortIcon field="cambio"></p-sortIcon>
+                        <th pSortableColumn="dividendos">Dividendos <p-sortIcon field="dividendos"></p-sortIcon>
+                        <th pSortableColumn="sector">Sector <p-sortIcon field="sector"></p-sortIcon>
+                        <th pSortableColumn="ticker">Ticker <p-sortIcon field="ticker"></p-sortIcon>
+                        <th pSortableColumn="empresa">Empresa <p-sortIcon field="empresa"></p-sortIcon>
+                        <th pSortableColumn="periodoTenencia">Periodo de Tenencia <p-sortIcon
+                                field="periodoTenencia"></p-sortIcon>
+                        </th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-accion>
+                    <tr>
+                        <td style="width:14%; min-width:10rem;">
+                            {{accion.purchaseDate}}
+                        </td>
+                        <td style="width:14%; min-width:10rem;">
+                            {{accion.quantity}}
+                        </td>
+                        <td style="width:14%; min-width:8rem;">
+                            {{accion.purchasePricePerShare | currency:'USD'}}
+                        </td>
+                        <td style="width:14%; min-width:10rem;">
+                            {{accion.totalPurchaseCost | currency:'USD'}}
+                        </td>
+                        <td style="width:14%; min-width: 10rem;">
+                            {{accion.commission | currency:'USD'}}
+                        </td>
+                        <td style="width:14%; min-width: 10rem;">
+                            {{accion.currentPricePerShare | currency:'USD'}}
+                        </td>
+                        <td style="width:14%; min-width: 10rem;">
+                            {{accion.currentTotalValue | currency:'USD'}}
+                        </td>
+                        <td style="width:14%; min-width: 10rem;">
+                            <p-badge [value]="accion.unrealizedProfitLoss | currency:'USD'" [styleClass]="getBadgeClass(accion)"/>
+                        </td>
+                        <td style="width:14%; min-width: 10rem;">
+                            {{accion.percentageChange}}
+                        </td>
+                        <td style="width:14%; min-width: 10rem;">
+                            {{accion.dividendsReceived | currency:'USD'}}
+                        </td>
+                        <td style="width:14%; min-width: 10rem;">
+                            {{accion.sector}}
+                        </td>
+                        <td style="width:14%; min-width: 10rem;">
+                            {{accion.ticker}}
+                        </td>
+                        <td style="width:14%; min-width: 10rem;">
+                            {{accion.companyName}}
+                        </td>
+                        <td style="width:14%; min-width: 10rem;">
+                            {{accion.holdingPeriod}}
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
